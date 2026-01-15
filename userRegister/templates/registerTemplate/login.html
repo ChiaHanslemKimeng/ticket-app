@@ -1,0 +1,20 @@
+{% extends 'registerTemplate/regBasic.html' %}
+{% block content %}
+
+<section class="hero">
+    <h2 class="heading">LOGIN</h2>
+    <form action="" method="POST">
+        <div class="input-field">
+            {% csrf_token %}
+            {{form.as_p}}
+        </div>
+        <div class="btn-box btns">
+            <input class="btn" type="submit" value="Login" name="" id="">
+        </div>
+        <h6>New to this site? <a href="{% url 'userRegister:Register' %}">Register</a></h6>
+        <h6>Forgot password? <a href="">Reset password</a></h6>
+    </form>
+</section>
+
+
+{% endblock content %}

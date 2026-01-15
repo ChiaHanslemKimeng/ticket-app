@@ -1,0 +1,150 @@
+{% extends 'dashboardTemplate/dashBasic.html' %}
+{% load static %}
+
+{% block content %}
+
+<header>
+    <a class="logo" href="{% url 'dashboardApp:homepage' %}">
+        <h2>Welcome <span>{{user.username}}</span></h2>
+    </a>
+    <nav class="navLinks">
+        {% if user.is_authenticated %}
+        <a href="{% url 'dashboardApp:homepage' %}">Feed</a>
+        <a href="{% url 'dashboardApp:mypost' %}">Posts</a>
+        <a href="{% url 'dashboardApp:followers' %}">Following</a>
+        <a href="{% url 'dashboardApp:profilepage' %}">Profile update</a>
+        <a href="{% url 'userRegister:logout' %}">Logout <span></span></a>
+        <div class="profilephoto">
+            {% if not profilePhoto.image %}
+            <img src="{% static 'image/download.png' %}" alt="">
+            {% else %}
+            <img src="{{profilePhoto.image.url}}" alt="">
+            {% endif %}
+        </div>
+        {% else %}
+        <a href="{% url 'userRegister:logout' %}">Login <span></span></a>
+        {% endif %}
+    </nav>
+
+</header>
+
+<section class="hero">
+    <div class="request-review">
+        <a href="{% url 'dashboardApp:createTicket' %}">Create Ticket</a>
+        <a href="{% url 'dashboardApp:createReview' %}">Post a Review</a>
+    </div>
+    {% if posts %}
+    <!-- <p>bonjour</p> -->
+    {% for p in posts %}
+    <!-- <p>bonjour</p> -->
+    {% if p.content_type == 'REVIEW' %}
+    <div class="review-box">
+        <div class="alert-time">
+            <p>{{p.user}} posted a review</p>
+            <!-- <p>hello</p> -->
+            <p>{{p.time_created}}</p>
+        </div>
+        <div class="title-box">
+            <h3>{{p.headline}}-</h3>
+            <div class="star-rating">
+                {% if p.rating == 1 %}
+                <span>&#9733</span>
+                <span>&#9734</span>
+                <span>&#9734</span>
+                <span>&#9734</span>
+                <span>&#9734</span>
+                {% elif p.rating == 2 %}
+                <span>&#9733</span>
+                <span>&#9733</span>
+                <span>&#9734</span>
+                <span>&#9734</span>
+                <span>&#9734</span>
+                {% elif p.rating == 3 %}
+                <span>&#9733</span>
+                <span>&#9733</span>
+                <span>&#9733</span>
+                <span>&#9734</span>
+                <span>&#9734</span>
+                {% elif p.rating == 4 %}
+                <span>&#9733</span>
+                <span>&#9733</span>
+                <span>&#9733</span>
+                <span>&#9733</span>
+                <span>&#9734</span>
+                {% elif p.rating == 5 %}
+                <span>&#9733</span>
+                <span>&#9733</span>
+                <span>&#9733</span>
+                <span>&#9733</span>
+                <span>&#9733</span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="description">
+            <p>{{p.body}}</p>
+        </div>
+        <div class="review-details">
+            <div class="review-name">
+                <h5>{{p.ticket.title}} - {{p.ticket.user}}</h5>
+            </div>
+            <div class="review-description">
+                <h4>{{p.ticket.description}}</h4>
+            </div>
+            <div class="review-image">
+                <img src="{{p.ticket.image.url}}" alt="">
+            </div>
+        </div>
+    </div>
+    {% else %}
+
+    <div class="ticket_post">
+                <div class="alert">
+                    <p>{{p.user}} posted a ticket</p>
+                    <p>{{p.time_created}}</p>
+                </div>
+                <div class="title-box">
+                </div>
+                <div class="description">
+                </div>
+                <div class="review-details">
+                    <div class="review-name">
+                        <h5>{{p.title}}</h5>
+                    </div>
+                    <div class="review-description">
+                        <h4>{{p.description}}</h4>
+                    </div>
+                    <div class="review-image">
+                        {% if p.image %}
+                        <img src="{{p.image.url}}" alt="">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="postbtn">
+                    {% if not p in ticket_response %}
+                        <a href="{% url 'dashboardApp:createReviewInResponse' p.id %}">Post Review</a>
+                    {% endif %}
+                </div>
+    </div>
+    
+
+   
+    {% endif %}
+    {% endfor %}
+    {% else %}
+    <p>No posts to display</p>
+    {% endif %}
+    <!-- <div class="requested-review">
+        <div class="requested-name">
+            <p>sarahj requested a review</p>
+            <p>5:14 a.m, June 26, 2020</p>
+        </div>
+        <div class="requested-description">
+            <h4>A Brief History of Time - Stephen Hawking</h4>
+        </div>
+        <div class="requested-btn">
+            <a href="#">Post a Review</a>
+        </div>
+    </div> -->
+</section>
+
+{% endblock content %}

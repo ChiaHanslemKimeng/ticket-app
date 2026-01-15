@@ -1,0 +1,48 @@
+{% extends 'dashboardTemplate/dashBasic.html' %}
+{% load static %}
+
+{% block content %}
+
+<header>
+    <a class="logo" href="{% url 'dashboardApp:homepage' %}">
+        <h2><span>{{user.username}}</span></h2>
+    </a>
+    <nav class="navLinks">
+        <a href="{% url 'dashboardApp:homepage' %}">Feed</a>
+        <a href="{% url 'dashboardApp:mypost' %}">Posts</a>
+        <a href="{% url 'dashboardApp:followers' %}">Following</a>
+        <a href="{% url 'dashboardApp:profilepage' %}">Profile <span></span></a>
+        <a href="{% url 'userRegister:login' %}">Logout <span></span></a>
+    </nav>
+</header>
+
+<section class="review_home">
+    <div class="reviewHeading">
+        <h1>Create a Review</h1>
+    </div>
+
+    <form class="reviewForm" action="" method="POST">
+        {% csrf_token %}
+        <div><p>you are posting in response to</p></div>
+        <div class="ticket_in_response">
+            <div class="review-name">
+                <h5>{{ticket_to_review.title}} - {{ticket_to_review.user}}</h5>
+            </div>
+            <div class="review-description">
+                <h4>{{ticket_to_review.description}}</h4>
+            </div>
+            <div class="review-image">
+                <img src="{{ticket_to_review.image.url}}" alt="">
+            </div>
+        </div>
+
+        <div class="book_article reviewText"><h4>Review</h4></div>
+        {{reviewform.as_table}}
+
+        <div class="submit_btn">
+            <input type="submit" value="Submit" name="" id="">
+        </div>
+    </form>
+</section>
+
+{% endblock content %}

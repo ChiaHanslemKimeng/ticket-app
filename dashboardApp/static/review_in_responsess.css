@@ -1,0 +1,101 @@
+:root{
+    --bg-color: #081b29;
+    --second-bg-color: #112e42;
+    --text-color: #ededed;
+    --main-color: #00abf0;
+}                                                                              
+
+.reviewForm{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem .5rem;
+    border: solid 2px var(--main-color);
+    margin-top: 2rem;
+}
+
+
+.reviewForm .ticket_in_response{
+    margin: .6rem;
+    border: solid 2px var(--main-color);
+    display: flex;
+    flex-direction: column;
+    padding: .5rem;
+  }
+
+  .reviewForm .ticket_in_response .review-name,
+  .reviewForm .ticket_in_response .review-description{
+    margin-bottom: 1rem;
+  }
+
+  .reviewForm .ticket_in_response .review-name h5,
+  .reviewForm .ticket_in_response .review-description h4{
+    color: var(--text-color);
+  }
+
+  .reviewForm .ticket_in_response .review-image{
+     height: 200px;
+     width: 150px;
+     border: solid 1px var(--main-color);
+  }
+
+  .reviewForm .ticket_in_response .review-image img{
+    height: 100%;
+    width: 100%;
+  }
+
+.reviewForm .title_box,
+.reviewForm .description_box,
+.reviewForm .image_box{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.8rem;
+}
+
+.reviewForm .title_box input,
+.reviewForm .description_box textarea{
+    padding: .5rem 1rem;
+    /* border: solid 2px var(--main-color); */
+}
+
+.reviewForm .title_box h5,
+.reviewForm .description_box h5,
+.reviewForm .image_box h5{
+    font-size: 1.5rem;
+}
+
+.reviewForm .reviewText{
+    border-top: solid 2px var(--main-color);
+    margin-top: 2rem;
+}
+
+.reviewForm .reviewText h4{
+    margin-top: 2rem;
+}
+
+.starRating{
+    display: flex;
+    gap: 2rem;
+}
+
+.reviewForm .submit_btn{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 3rem;
+}
+
+.reviewForm .submit_btn input{
+    background: var(--main-color);
+    border: .2rem solid var(--main-color);
+    border-radius: .8rem;
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    color: var(--bg-color);
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+    cursor: pointer;
+}
+

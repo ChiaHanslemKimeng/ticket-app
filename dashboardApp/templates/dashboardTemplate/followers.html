@@ -1,0 +1,66 @@
+{% extends 'dashboardTemplate/dashBasic.html' %}
+{% load static %}
+
+{% block content %}
+
+<header>
+    <a class="logo" href="{% url 'dashboardApp:homepage' %}">
+        <h2><span>{{user.username}}</span></h2>
+    </a>
+    <nav class="navLinks">
+        <a href="{% url 'dashboardApp:homepage' %}">Feed</a>
+        <a href="{% url 'dashboardApp:mypost' %}">Posts</a>
+        <a href="{% url 'dashboardApp:followers' %}">Following</a>
+        <a href="{% url 'dashboardApp:profilepage' %}">Profile update <span></span></a>
+        <a href="{% url 'userRegister:login' %}">Logout <span></span></a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="search-box">
+        <h3>Follow New Users</h3>
+        <form action="" method="POST" class="seach-bar">
+            <!-- <div></div>
+            <input class="search-btn" type="submit" value="Submit"> -->
+            {% csrf_token %}
+            <select name="follow_user" id="">
+            {% if user_to_follow %}
+            {% for usertofollow in user_to_follow %}
+            <option value="{{usertofollow.id}}">{{usertofollow}}</option>
+            {% endfor %}
+            <input type="submit" name="" value="Follow" id="">
+            {% endif %}
+            </select>
+            
+        </form>
+    </div>
+    
+    <div class="following-box">
+        {% if users_follow %}
+        <h3>Following</h3>
+        <table>
+            {% for usersfollow in users_follow %}
+            <tr>
+                <td class="name-column">{{usersfollow.followed_user.username}}</td>
+                <td><form action="{% url 'dashboardApp:unfollow' usersfollow.followed_user.id %}" onsubmit="return confirm('Unfollow {{usersfollow.followed_user.username}}?')" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Unfollow" name="" id="">
+                </form></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+    {% if user_follow_you %}
+    <div class="followers-box">
+        <h3>Followers</h3>
+        <table>
+            {% for userfollowYou in user_follow_you %}
+            <tr><td>{{userfollowYou}}</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+</section>
+
+{% endblock content %}

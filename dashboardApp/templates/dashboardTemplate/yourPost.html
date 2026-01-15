@@ -1,0 +1,111 @@
+{% extends 'dashboardTemplate/dashBasic.html' %}
+{% load static %}
+
+{% block content %}
+
+<header>
+    <a class="logo" href="{% url 'dashboardApp:homepage' %}">
+        <h2><span>{{user.username}}</span></h2>
+    </a>
+    <nav class="navLinks">
+        <a href="{% url 'dashboardApp:homepage' %}">Feed</a>
+        <a href="{% url 'dashboardApp:mypost' %}">Posts</a>
+        <a href="{% url 'dashboardApp:followers' %}">Following</a>
+        <a href="{% url 'dashboardApp:profilepage' %}">Profile update <span></span></a>
+        <a href="{% url 'userRegister:login' %}">Logout <span></span></a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="reviewHeading">
+        <h1>Your Posts</h1>
+    </div>
+
+    <div class="post_container">
+        <div class="post1">
+            {% for p in posts %}
+                 {% if p.is_ticket %}
+                    <div class="alert">
+                        <p>You posted a ticket</p>
+                        <p>{{p.tick_datecreated}}</p>
+                    </div>
+                    <div class="title-box">
+                        <!-- <h3>Truly revolutionary-</h3>
+                        <div class="star-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div> -->
+                    </div>
+                    <div class="description">
+                        <!-- <p>An excellent read and would definitely recommend</p> -->
+                    </div>
+                    <div class="review-details">
+                        <div class="review-name">
+                            <h5>{{p.tick_title}}- {{user.username}}</h5>
+                        </div>
+                        <div class="review-description">
+                            <h4>{{p.tick_description}}</h4>
+                        </div>
+                        <div class="review-image">
+                            {% if p.tick_image %}
+                            <img src="{{p.tick_image.url}}" alt="">
+                            {% endif %}
+                        </div>
+                    </div>
+            
+                    <div class="edit_delete">
+                        <button onclick="window.location.href = '{% url 'dashboardApp:editbtn' p.tick_id %}';">Edit</button>
+                        <button onclick="window.location.href = '{% url 'dashboardApp:deletebtn' p.tick_id %}';">Delete</button>
+                    </div>
+            
+        </div>
+         {% else %}
+        <div class="post1">
+            <div class="alert">
+                <p>You posted a review</p>
+                <p>{{p.rev_time}}</p>
+            </div>
+            <div class="title-box">
+                <h3>{{p.rev_headline}}-</h3>
+                <div class="star-rating">
+                    {% for i in p.yellow_star %}
+                    <span>&#9733</span>
+                    {% endfor %}
+                    {% for s in p.empty_star %}
+                    <span>&#9734</span>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="description">
+                <p>{{p.rev_body}}</p>
+            </div>
+            <div class="review-details">
+                <div class="review-name">
+                    <h5>{{p.tick_title}} - {{p.rev_answer_to}}</h5>
+                </div>
+                <div class="review-description">
+                    <h4>{{p.tick_description}}</h4>
+                </div>
+                <div class="review-image">
+                    {% if p.tick_image %}
+                        <img src="{{p.tick_image.url}}" alt="">
+                    {% endif %}
+                </div>
+            </div>
+    
+            <div class="edit_delete">
+                <button onclick="window.location.href = '{% url 'dashboardApp:revEdit' p.rev_id %}';">Edit</button>
+                <button onclick="window.location.href = '{% url 'dashboardApp:revDel' p.rev_id %}';">Delete</button>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+      
+    </div>
+</section>
+
+{% endblock content %}

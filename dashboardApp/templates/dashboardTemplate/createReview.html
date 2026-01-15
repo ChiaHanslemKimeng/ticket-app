@@ -1,0 +1,74 @@
+{% extends 'dashboardTemplate/dashBasic.html' %}
+{% load static %}
+
+{% block content %}
+
+<header>
+    <a class="logo" href="{% url 'dashboardApp:homepage' %}">
+        <h2><span>{{user.username}}</span></h2>
+    </a>
+    <nav class="navLinks">
+        <a href="{% url 'dashboardApp:homepage' %}">Feed</a>
+        <a href="{% url 'dashboardApp:mypost' %}">Posts</a>
+        <a href="{% url 'dashboardApp:followers' %}">Following</a>
+        <a href="{% url 'dashboardApp:profilepage' %}">Profile <span></span></a>
+        <a href="{% url 'userRegister:login' %}">Logout <span></span></a>
+    </nav>
+</header>
+
+<section class="review_home">
+    <div class="reviewHeading">
+        <h1>Create a Review</h1>
+    </div>
+    <form method="POST" class="create_review_container" enctype="multipart/form-data">
+        <div class="book_article"><h4>Book/Article</h4></div>
+        {% csrf_token %}
+        {{form.as_p}}
+        
+  
+        <!-- <div class="title_box">
+            <h5>Title</h5>
+            <input type="text">
+        </div>
+        <div class="description_box">
+            <h5>Description</h5>
+            <textarea name="" rows="8" id=""></textarea>
+        </div>
+
+        <div class="image_box">
+            <h5>Image</h5>
+            <input type="file" name="" id="">
+        </div> -->
+
+        <div class="book_article reviewText"><h4>Review</h4></div>
+        {{reviewform.as_table}}
+
+        <!-- <div class="title_box">
+            <h5>Headline</h5>
+            <input type="text" name="" id="">
+        </div>
+
+        <div class="description_box">
+            <h5>Rating</h5>
+            <div class="starRating">
+                <input type="radio" value="-0" required>-0
+                <input type="radio" value="1" name="" id="" required>-1
+                <input type="radio" value="2" name="" id="" required>-2
+                <input type="radio" value="3" name="" id="" required>-3
+                <input type="radio" value="4" name="" id="" required>-4
+                <input type="radio" value="5" name="" id="" required>-5
+            </div>
+        </div>
+
+        <div class="description_box">
+            <h5>Body</h5>
+            <textarea name="" rows="8" id=""></textarea>
+        </div> -->
+
+        <div class="submit_btn">
+            <input type="submit" value="Submit" name="" id="">
+        </div>
+    </form>
+</section>
+
+{% endblock content %}

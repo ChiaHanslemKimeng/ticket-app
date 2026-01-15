@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: none; */
+  list-style: none;
+  outline: none;
+  scroll-behavior: smooth;
+  text-decoration: none;
+}
+
+:root{
+    --bg-color: #081b29;
+    --second-bg-color: #112e42;
+    --text-color: #ededed;
+    --main-color: #00abf0;
+}
+  
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+  
+body{
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 9%;
+  background: var(--bg-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  transition: .3s;
+}
+
+.header.sticky{
+    background: var(--bg-color);
+}
+
+.logo{
+    position: relative;
+    font-size: 2rem;
+    /* color: var(--text-color); */
+    font-weight: 600;
+  }
+
+  .logo h2{
+    color: var(--text-color);
+  }
+
+  .logo span{
+    color: var(--main-color);
+  }
+  
+  .navLinks{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .navLinks a{
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-left: 3.5rem;
+    transition: .4s;
+  }
+  
+  .navLinks a:hover,
+  .navLinks a.active{
+    color: var(--main-color);
+  }
+
+  header .navLinks .profilephoto{
+    height: 40px;
+    width: 40px;
+    border-radius: 30%;
+  }
+
+  header .navLinks .profilephoto img{
+    height: 100%;
+    width: 100%;
+    border-radius: 30%;
+    object-fit: cover;
+  }
+
+  /* hero design ================================================================= */
+  .hero{
+    margin-top: 10rem;
+    padding: 2rem 30%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero .ticket{
+    border: solid 2px var(--main-color);
+    margin-top: 3rem;
+    padding: .5rem;
+  }
+
+  .hero .ticket .ticketTitle{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .hero .request-review{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .hero .request-review a{
+    background: var(--main-color);
+    border: .2rem solid var(--main-color);
+    border-radius: .8rem;
+    padding: 1rem 4.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    color: var(--text-color);
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+    cursor: pointer;
+  }
+
+  .review-box,
+  .requested-review,
+  .ticket_post{
+    display: flex;
+    flex-direction: column;
+    border: solid 2px var(--main-color);
+    padding: .5rem;
+    margin-top: 2rem;
+  }
+
+  .review-box .alert-time,
+  .ticket_post .alert{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .ticket_post .alert{
+    margin-bottom: 1rem;
+  }
+
+  .review-box .title-box{
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .review-box .description{
+    margin-top: 1.5rem;
+    display: flex;
+  }
+
+   .review-details{
+    margin: .6rem;
+    border: solid 2px var(--main-color);
+    display: flex;
+    flex-direction: column;
+    padding: .5rem;
+  }
+
+   .review-details .review-name,
+   .review-details .review-description{
+    margin-bottom: 1rem;
+  }
+
+   .review-details .review-name h5,
+  .review-box .review-details .review-description h4{
+    color: var(--text-color);
+  }
+
+ .review-details .review-image,
+  .imageBox{
+     height: 200px;
+     width: 150px;
+     border: solid 1px var(--main-color);
+  }
+
+   .review-details .review-image img{
+    height: 100%;
+    width: 100%;
+  }
+
+  .requested-review .requested-name{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .requested-review .requested-description{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: .8rem;
+  }
+
+  .requested-review .requested-btn{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .ticket_post .postbtn{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .requested-review .requested-btn a,
+  .ticket_post .postbtn a{
+    background: var(--main-color);
+    border: .2rem solid var(--main-color);
+    border-radius: .8rem;
+    padding: 1rem 4.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    color: var(--text-color);
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+    cursor: pointer;
+  }
+
+
+  /* followers page design =====================================================  */
+  table{
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th,td{
+    border: 1px solid;
+  }
+
+  table .name-column{
+    width: 87%;
+  }
+
+  table td{
+    padding: .7rem;
+    font-size: 1.3rem;
+  }
+
+  .hero .search-box,
+  .hero .followers-box,
+  .hero .following-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero .search-box .seach-bar .search-btn{
+    background: var(--main-color);
+    border: .2rem solid var(--main-color);
+    border-radius: .8rem;
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    color: var(--bg-color);
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+    cursor: pointer;
+  }
+
+  .hero .search-box .seach-bar .search{
+    width: 74%;
+    border: solid 2px var(--main-color);
+    border-radius: 7px;
+  }
+
+  .hero .search-box .seach-bar .search::-moz-placeholder{
+    text-align: center;
+  }
+
+  .hero .search-box h3,
+  .hero .following-box h3,
+  .hero .followers-box h3{
+    font-weight: bold;
+    color: var(--main-color);
+    font-size: 2rem;
+  }
+
+  .hero .search-box .seach-bar{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+
+  /* create ticket design =========================================== */
+  .hero .ticketform{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 70rem;
+    margin: 0;
+    text-align: center;
+    margin-top: 5rem;
+    border: solid 2px var(--main-color);
+    border-radius: 5px;
+    padding: 3rem;
+  }
+
+  .hero .h2title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero .h2title h2{
+    font-size: 2.8rem;
+  }
+
+  .hero .ticketform .input-field{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .hero .ticketform label{
+    font-size: 2rem;
+  }
+
+  .hero .ticketform p{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+
+  .hero .ticketform .submit-btn{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .hero .ticketform .submit-btn input{
+    background: var(--main-color);
+    border: .2rem solid var(--main-color);
+    border-radius: .8rem;
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    color: var(--bg-color);
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+    cursor: pointer;
+  }
+
+
+  

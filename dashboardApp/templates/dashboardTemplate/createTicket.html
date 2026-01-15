@@ -1,0 +1,49 @@
+{% extends 'dashboardTemplate/dashBasic.html' %}
+{% load static %}
+
+{% block content %}
+
+<header>
+    <a class="logo" href="{% url 'dashboardApp:homepage' %}">
+        <h2><span>{{user.username}}</span></h2>
+    </a>
+    <nav class="navLinks">
+        <a href="{% url 'dashboardApp:homepage' %}">Feed</a>
+        <a href="{% url 'dashboardApp:mypost' %}">Posts</a>
+        <a href="{% url 'dashboardApp:followers' %}">Following</a>
+        <a href="{% url 'dashboardApp:profilepage' %}">Profile <span></span></a>
+        <a href="{% url 'userRegister:login' %}">Logout <span></span></a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="h2title"><h2>Create a <span>Ticket</span></h2></div>
+    <form class="ticketform" method="POST" enctype="multipart/form-data">
+        <div class="input-field">
+            {% csrf_token %}
+            {{form.as_p}}
+            <!-- {{form.as_p}} -->
+            <!-- <label for="title">Title</label>
+            <input type="text" name="" id="">
+            <label for="description">Description</label>
+            <textarea cols="20" rows="5" name="" id=""></textarea>
+            <label for="image">Image</label>
+            <input type="file" name="" id=""> -->
+        </div>
+        <div class="submit-btn">
+            <input class="search-btn" type="submit" value="Submit" name="" id="">
+        </div>
+    </form>
+</section>
+
+<script>
+    $(function() {
+        $("#text_id").emojioneArea({
+            pickarPosition:'right'
+        });
+        $("#title_id").emojioneArea({
+            pickarPosition:'right'
+        });
+    });
+</script>
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends 'dashboardTemplate/dashBasic.html' %}
+{% load static %}
+{% block content %}
+<header>
+    <a class="logo" href="{% url 'dashboardApp:homepage' %}">
+        <h2><span>{{user.username}}</span></h2>
+    </a>
+    <nav class="navLinks">
+        <a href="{% url 'dashboardApp:homepage' %}">Feed</a>
+        <a href="{% url 'dashboardApp:mypost' %}">Posts</a>
+        <a href="{% url 'dashboardApp:followers' %}">Following</a>
+        <a href="{% url 'dashboardApp:profilepage' %}">Profile update <span></span></a>
+        <a href="{% url 'userRegister:login' %}">Logout <span></span></a>
+    </nav>
+</header>
+
+<section class="hero">
+    <form method="Post" enctype="multipart/form-data">
+        {%  csrf_token  %}
+        {{form.as_p}}
+        <input type="submit" value="save">
+    </form>
+    
+</section>
+
+{% endblock content %}

@@ -1,0 +1,28 @@
+:root{
+    --bg-color: #081b29;
+    --second-bg-color: #112e42;
+    --text-color: #ededed;
+    --main-color: #00abf0;
+}
+
+.hero form .delbtn{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
+
+.hero form .delbtn input,
+.hero form .delbtn a{
+    background: var(--main-color);
+    border: .2rem solid var(--main-color);
+    border-radius: .8rem;
+    padding: 1rem 4.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    color: var(--text-color);
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+    cursor: pointer;
+}
