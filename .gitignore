@@ -13,6 +13,7 @@ staticfiles/
 # Virtual environment
 venv/
 env/
+db.sqlite3
 
 # VS Code
 .vscode/
