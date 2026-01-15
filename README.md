@@ -26,8 +26,8 @@ A Django web application for managing tickets and reviews.
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/USERNAME/ticketApp.git
-cd ticketApp
+git clone https://github.com/ChiaHanslemKimeng/ticket-app.git
+cd ticket-app
 ```
 
 ### 2️⃣ Create virtual environment
